@@ -10,6 +10,8 @@
 
 **An interactive cyberpunk "Choose Your Own Adventure" game featuring procedural Web Audio synthesizer music, dynamic branching narratives, 5 distinct endings, and both Web & Terminal CLI editions.**
 
+🎮 **[Play Live Web Game Here](https://gamerxd01.github.io/copilot-adventure-game/)**
+
 [Play in Browser](#-how-to-play-web-edition) • [Run in Terminal](#-how-to-play-terminal-cli-edition) • [Storyline & Endings](#-storyline--endings) • [GitHub Copilot Prompts](#-ai-copilot-prompts-used)
 
 </div>
