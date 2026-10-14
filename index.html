@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ChronoQuest: Neon Odyssey - An interactive cyberpunk choose-your-own-adventure game built with HTML, CSS, JavaScript, and AI coding assistance.">
+  <meta name="theme-color" content="#090a15">
+  <title>ChronoQuest: Neon Odyssey | Cyberpunk Interactive Adventure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="cyber-glow-bg" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="cyber-header">
+      <div class="header-brand">
+        <span class="status-indicator pulsating"></span>
+        <span class="cyber-tag">SYS//VER.3.8-AI</span>
+        <h1 class="glitch-title" data-text="CHRONOQUEST">CHRONOQUEST</h1>
+        <span class="subtitle">NEON ODYSSEY &bull; INTERACTIVE ADVENTURE</span>
+      </div>
+
+      <div class="header-controls">
+        <button id="audio-toggle-btn" class="cyber-btn sm" title="Toggle Synthesizer Audio (Music & SFX)">
+          <span class="icon">🔊</span> <span id="audio-label">AUDIO: ON</span>
+        </button>
+        <button id="achievements-btn" class="cyber-btn sm" title="View Unlocked Badges">
+          <span class="icon">🏆</span> <span>BADGES (<span id="badge-count">0/6</span>)</span>
+        </button>
+        <button id="restart-btn" class="cyber-btn sm danger" title="Reboot Simulation">
+          <span class="icon">🔄</span> <span>REBOOT</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Status HUD Bar -->
+    <section class="hud-bar" aria-label="Player Vital Stats">
+      <div class="hud-item hud-agent">
+        <span class="hud-label">OPERATIVE</span>
+        <span class="hud-value agent-name" id="player-name">CIPHER-07</span>
+      </div>
+
+      <div class="hud-item hud-hp">
+        <div class="hud-label-row">
+          <span class="hud-label">INTEGRITY (HP)</span>
+          <span class="hud-val-text" id="hp-text">100%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill hp-fill" id="hp-fill" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="hud-item hud-energy">
+        <div class="hud-label-row">
+          <span class="hud-label">CHRONO CHARGES</span>
+          <span class="hud-val-text" id="energy-text">3 / 3</span>
+        </div>
+        <div class="energy-cells" id="energy-cells">
+          <span class="cell active"></span>
+          <span class="cell active"></span>
+          <span class="cell active"></span>
+        </div>
+      </div>
+
+      <div class="hud-item hud-inventory">
+        <span class="hud-label">DATA DECK / INVENTORY</span>
+        <div class="inventory-tags" id="inventory-list">
+          <span class="inv-empty">EMPTY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Game Interface -->
+    <main class="terminal-container">
+      <div class="terminal-screen">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title" id="scene-location">SECTOR 07 &bull; CRYO-VAULT 4B</span>
+          <span class="terminal-time" id="system-time">SYNCING...</span>
+        </div>
+
+        <div class="terminal-content">
+          <div class="scene-visual-badge" id="scene-badge">
+            <span class="badge-icon" id="badge-icon">⚡</span>
+            <span class="badge-text" id="badge-text">STATUS: AWAKENING</span>
+          </div>
+
+          <!-- Story Text Area -->
+          <div class="story-box" id="story-box" aria-live="polite">
+            <h2 class="scene-title" id="scene-title">AWAKENING PROTOCOL</h2>
+            <div class="story-text" id="story-text">
+              <!-- Animated typewriter text injected via JS -->
+            </div>
+            <button id="skip-typewriter-btn" class="skip-btn" title="Skip typing animation">[Click or press SPACE to skip typing]</button>
+          </div>
+
+          <!-- Dynamic Choices Section -->
+          <div class="choices-container" id="choices-container" aria-label="Available Choices">
+            <div class="choices-header">
+              <span>AVAILABLE DIRECTIVES:</span>
+              <span class="key-hint">Press keys [1 - 4]</span>
+            </div>
+            <div class="choices-grid" id="choices-grid">
+              <!-- Choice buttons dynamically rendered -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mission Log History Drawer -->
+    <aside class="log-drawer" id="log-drawer">
+      <div class="log-drawer-header">
+        <span class="log-icon">📜</span>
+        <span class="log-title">MISSION TRANSMISSION LOG</span>
+        <button id="clear-log-btn" class="log-clear-btn" title="Clear Past Transmissions">CLEAR LOG</button>
+      </div>
+      <div class="log-entries" id="log-entries">
+        <div class="log-entry system">[SYS-INIT] Neural synchronization online. Subroutines nominal.</div>
+      </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+      <p>
+        Built with 🤖 <strong>GitHub Copilot</strong> &bull; Open Source for <strong>Hacktoberfest / MLH Global Hack Week</strong>
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/GamerxD01/copilot-adventure-game" target="_blank" rel="noopener">GitHub Repository</a>
+        <span>&bull;</span>
+        <span class="footer-tip">Tip: Run <code>python adventure.py</code> for the CLI terminal edition!</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Achievements Modal -->
+  <div class="modal-backdrop" id="achievements-modal" hidden>
+    <div class="cyber-modal">
+      <div class="modal-header">
+        <h2>MISSION BADGES & ACHIEVEMENTS</h2>
+        <button class="modal-close-btn" id="close-modal-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="achievements-grid" id="achievements-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
